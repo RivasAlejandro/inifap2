@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar  color="inifap">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Recomendaciones</ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<div>
+  <ion-list>
+
+    <ion-item *ngFor="let r of arreglo " text-nowrap>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+        <img src="{{logo(r.fase)}}" alt="" height="50%" width="50%"> <br>
+        {{r.fase}} <br>
+      Enso: {{r.valor}}
+          </ion-col>
+          <ion-col col-8 text-left > <p text-nowrap	>{{r.titulo}}</p> </ion-col>
+
+         
+        </ion-row>
+        <ion-row  > <ion-col col-4 > Fecha <br> {{r.fecha}}</ion-col> 
+        <ion-col col-8  text-right style="list-style-type: none; padding:0px; margin: 0px;"> <div *ngFor="let c of r.catalogo" text-right  (click)="mostrarInfo(c.nombre,c.descripcion)">
+               {{c.nombre}}     
+        </div></ion-col>
+        </ion-row>
+
+<ion-row>
+  <ion-col col-12 item-left>  
+      Recomendación:
+    <p   (click)="mostrar(r.recomendacion)"> 
+
+      {{r.recomendacion}}  
+    </p>
+  </ion-col>
+
+</ion-row>
+<button  ion-button round color="secondary" (click)="gotoDetalle(r.catalogo,r.titulo,r.valor,r.fecha)">Ver detalle
+
+</button>
+<button ion-button color="light" small>Aplicar</button>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</div>
+ 
+</ion-content>
